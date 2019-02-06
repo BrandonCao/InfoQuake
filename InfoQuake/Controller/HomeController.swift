@@ -26,14 +26,16 @@ class HomeController: BaseViewController {
 	init(api: ApiService) {
 		viewModel = HomeViewModel(apiService: api)
 		super.init(nibName: nil, bundle: nil)
+		viewModel.delegate = self
 	}
 	
 	required init?(coder aDecoder: NSCoder) { fatalError() }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		viewModel.registerTableView(tv: tableView)
 	}
+	
 	
 	override func setupController() {
 		super.setupController()
@@ -63,4 +65,18 @@ extension HomeController: UITableViewDelegate {
 		viewModel.checkPagination(indexPath: indexPath)
 	}
 }
+
+
+// MARK: - Table View Delegate
+extension HomeController: HomeViewModelDelegate {
+	
+	func showNetworkError() {
+		DispatchQueue.main.async {
+			self.networkErrorView.isHidden = false
+			self.view.bringSubviewToFront(self.networkErrorView)
+		}
+	}
+	
+}
+
 

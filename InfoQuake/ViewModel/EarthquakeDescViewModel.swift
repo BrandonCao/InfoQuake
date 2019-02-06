@@ -14,9 +14,9 @@ class EarthquakeDescViewModel: NSObject {
 	private var feature: Feature!
 	
 	var title: String?
-	var place: String?
-	var url: String?
-	var detail: String?
+	var time: String?
+	var url: URL?
+	var magnitude: String?
 	
 	init(features: Feature) {
 		self.feature = features
@@ -27,9 +27,9 @@ class EarthquakeDescViewModel: NSObject {
 	private func configure() {
 		let properties = feature.properties
 		title = properties.title
-		place = properties.place
-		url = properties.url
-		detail = properties.detail
+		time = "Time of event:\n" + Date.dateFromMilliseconds(feature.properties.time)
+		url = URL(string: properties.url)
+		magnitude = "Magnitude:\n\(properties.mag)"
 	}
 	
 }

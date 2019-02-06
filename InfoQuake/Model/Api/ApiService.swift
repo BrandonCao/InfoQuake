@@ -14,9 +14,7 @@ import UIKit
 class ApiService: NSObject {
 	
 	// Host defaults to getting Earth quaks for the last 30 days
-	
 	private let host: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake"
-	
 	private var session: URLSession = URLSession(configuration: .default)
 	private var dataTask: URLSessionDataTask?
 	
@@ -40,7 +38,6 @@ class ApiService: NSObject {
 					}
 					
 				} catch let error {
-					print(error)
 					callback(nil, error)
 				}
 			}

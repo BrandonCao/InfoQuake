@@ -11,6 +11,14 @@ import UIKit
 
 class BaseViewController: UIViewController {
 	
+	var networkErrorView: NetworkErrorView = {
+		let v = NetworkErrorView()
+		v.translatesAutoresizingMaskIntoConstraints = false
+		v.backgroundColor = .white
+		v.isHidden = true
+		return v
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupController()
@@ -21,6 +29,14 @@ class BaseViewController: UIViewController {
 		view.backgroundColor = .lightGray
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+		view.addSubview(networkErrorView)
+		
+		NSLayoutConstraint.activate([
+			networkErrorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			networkErrorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			networkErrorView.topAnchor.constraint(equalTo: view.topAnchor),
+			networkErrorView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
 	}
 	
 }

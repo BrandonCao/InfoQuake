@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 
+protocol HomeViewModelDelegate: class {
+	func showNetworkError()
+	
+}
+
+
 class HomeViewModel: NSObject {
 	
 	
@@ -19,7 +25,9 @@ class HomeViewModel: NSObject {
 	var shouldStopPaging = false
 	var isGettingNextPage = false
 	var searchTerm: String = ""
-
+	
+	var delegate: HomeViewModelDelegate?
+	
 	private var tableView: UITableView!
 	
 	private var geoData: GeoData? {
@@ -49,7 +57,8 @@ class HomeViewModel: NSObject {
 		featuresArray.removeAll()
 		apiService.grabDashboardData(limit: self.limit, offset: self.currentOffset, callback:  { (data, error) in
 			if let error = error {
-				print(error)
+				guard let delegate = self.delegate else { return }
+				delegate.showNetworkError()
 				return
 			}
 			
@@ -106,6 +115,7 @@ extension HomeViewModel: PaginationDelegate {
 			self.apiService.grabDashboardData(limit: self.limit, offset: self.currentOffset, callback: { (data, error) in
 				if let error = error {
 					print(error)
+					self.delegate?.showNetworkError()
 					return
 				}
 				guard let data = data else { return }
