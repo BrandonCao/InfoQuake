@@ -52,6 +52,9 @@ class HomeController: BaseViewController {
 extension HomeController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if deviceType == .pad {
+			return 160
+		}
 		return 130
 	}
 	

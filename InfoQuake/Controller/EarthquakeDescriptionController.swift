@@ -11,8 +11,7 @@ import UIKit
 import SafariServices
 
 class EarthquakeDescriptionController: BaseViewController {
-	
-	
+		
 	private let leadingAnchorConst: CGFloat = 15.0
 	
 	private lazy var scrollView: UIScrollView = {
@@ -27,7 +26,7 @@ class EarthquakeDescriptionController: BaseViewController {
 		l.textColor = Theme.Colors.cellFontColor.color
 		l.lineBreakMode = .byWordWrapping
 		l.numberOfLines = 0
-		l.font = UIFont.systemFont(ofSize: 25.0, weight: .medium)
+		l.font = Theme.Fonts.title.font
 		return l
 	}()
 	
@@ -37,7 +36,8 @@ class EarthquakeDescriptionController: BaseViewController {
 		l.textColor = Theme.Colors.cellFontColor.color
 		l.lineBreakMode = .byWordWrapping
 		l.numberOfLines = 0
-		l.font = UIFont.systemFont(ofSize: 20.0)
+	
+		l.font = Theme.Fonts.infoLabel.font
 		return l
 	}()
 	
@@ -47,7 +47,7 @@ class EarthquakeDescriptionController: BaseViewController {
 		l.textColor = Theme.Colors.cellFontColor.color
 		l.lineBreakMode = .byWordWrapping
 		l.numberOfLines = 0
-		l.font = UIFont.systemFont(ofSize: 20.0)
+		l.font = Theme.Fonts.infoLabel.font
 		return l
 	}()
 	
@@ -58,7 +58,7 @@ class EarthquakeDescriptionController: BaseViewController {
 		l.lineBreakMode = .byWordWrapping
 		l.numberOfLines = 0
 		l.text = "For more info about the event:"
-		l.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+		l.font = Theme.Fonts.moreInfoLabel.font
 		return l
 	}()
 	
@@ -67,7 +67,7 @@ class EarthquakeDescriptionController: BaseViewController {
 		b.translatesAutoresizingMaskIntoConstraints = false
 		b.setTitleColor(.blue, for: .normal)
 		b.setTitle("Click Here", for: .normal)
-		b.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+		b.titleLabel?.font = Theme.Fonts.urlButton.font
 		b.addTarget(self, action: #selector(openEventUrl), for: .touchUpInside)
 		return b
 	}()

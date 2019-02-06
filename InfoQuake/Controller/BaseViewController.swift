@@ -19,6 +19,8 @@ class BaseViewController: UIViewController {
 		return v
 	}()
 	
+	var deviceType = UIDevice.current.userInterfaceIdiom
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupController()
