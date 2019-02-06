@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46857A7A220A95A900D940D3 /* PaginationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46857A79220A95A900D940D3 /* PaginationDelegate.swift */; };
 		46A57E1022090C270065312B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A57E0F22090C270065312B /* AppDelegate.swift */; };
 		46A57E1222090C270065312B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A57E1122090C270065312B /* HomeController.swift */; };
 		46A57E1722090C280065312B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A57E1622090C280065312B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46857A79220A95A900D940D3 /* PaginationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationDelegate.swift; sourceTree = "<group>"; };
 		46A57E0C22090C270065312B /* InfoQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A57E0F22090C270065312B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A57E1122090C270065312B /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				46A57E402209183B0065312B /* Codable+Extensions.swift */,
 				46A57E4422093EB90065312B /* Date+Extensions.swift */,
+				46857A79220A95A900D940D3 /* PaginationDelegate.swift */,
 			);
 			path = "Extension+Protocols";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				46A57E3A220913A00065312B /* GeoData.swift in Sources */,
 				46A57E3E220915450065312B /* HomeViewModel.swift in Sources */,
 				46A57E3C220914400065312B /* HTTPMethod.swift in Sources */,
+				46857A7A220A95A900D940D3 /* PaginationDelegate.swift in Sources */,
 				46A57E38220911AE0065312B /* Theme.swift in Sources */,
 				46A57E1022090C270065312B /* AppDelegate.swift in Sources */,
 				46A57E3522090E9E0065312B /* ApiService.swift in Sources */,

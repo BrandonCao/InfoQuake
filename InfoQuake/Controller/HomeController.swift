@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeController: BaseViewController {
+
 	
 	private lazy var tableView: UITableView = {
 		let tv = UITableView()
@@ -16,7 +17,6 @@ class HomeController: BaseViewController {
 		tv.register(FeatureCell.self, forCellReuseIdentifier: FeatureCell.ReuseId)
 		tv.backgroundColor = .clear
 		tv.delegate = self
-		tv.dataSource = viewModel
 		view.addSubview(tv)
 		return tv
 	}()
@@ -32,11 +32,7 @@ class HomeController: BaseViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		viewModel.grabData {
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		}
+		viewModel.registerTableView(tv: tableView)
 	}
 	
 	override func setupController() {
@@ -63,4 +59,8 @@ extension HomeController: UITableViewDelegate {
 		show(vc, sender: nil)
 	}
 	
+	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		viewModel.checkPagination(indexPath: indexPath)
+	}
 }
+

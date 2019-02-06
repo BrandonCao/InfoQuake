@@ -10,16 +10,19 @@ import Foundation
 import UIKit
 
 
+
 class ApiService: NSObject {
 	
-	private static let limit = 30
-	private static let currentDate = Date()
+	// Host defaults to getting Earth quaks for the last 30 days
+	
 	private let host: String = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake"
+	
 	private var session: URLSession = URLSession(configuration: .default)
 	private var dataTask: URLSessionDataTask?
 	
-	func grabDashboardData(callback: @escaping (GeoData?, Error?) -> Void){
-		guard let url = URL(string: host) else { callback(nil, nil); return }
+	func grabDashboardData(limit: Int = 30, offset: Int = 1, callback: @escaping (GeoData?, Error?) -> Void){
+		let paginationHost = host + "&limit=\(limit)&offset=\(offset)"
+		guard let url = URL(string: paginationHost) else { callback(nil, nil); return }
 		makeRequest(with: url, paramaters: [:], httpMethod: .GET) { (data, response, error) in
 			if let error = error {
 				callback(nil, error)
