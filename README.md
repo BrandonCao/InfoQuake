@@ -5,7 +5,9 @@ iOS Coding Exercise.
 
 #### Features
 Api request using URLSessionDataTask
+
 Codable models to parse JSON Response
+
 Display data on UITableView and ScrollView
 
 
